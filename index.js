@@ -31,6 +31,13 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Endpoint to gracefully shutdown the server
+app.post('/shutdown', (req, res) => {
+    res.send('Shutting down server...');
+    process.exit(0); // Exit the Node.js process
+});
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
